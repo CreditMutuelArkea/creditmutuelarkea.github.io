@@ -1,0 +1,231 @@
+@import url("../roboto.res");
+@import url("simple-nodeps.css");
+
+
+ .red{
+   color: #c62a2a !important;
+ }
+
+ .title {
+   font-weight: bold !important;
+
+ }
+
+.reveal .slides section .fragment.current-grow {
+  opacity: 0.5;
+  visibility: visible;
+
+  -webkit-transform: scale(0.6);
+      -ms-transform: scale(0.6);
+          transform: scale(0.6);
+}
+
+.reveal .slides section .fragment.current-grow.visible {
+  opacity: 0.8;
+  visibility: visible;
+
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+  .reveal .slides section .fragment.current-grow.current-fragment {
+    opacity: 1;
+    visibility: visible;
+    padding-top: 0.82em;
+    padding-bottom : 0.82em;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+
+  .reveal .slides section .fragment.current-top-left {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .reveal .slides section .fragment.current-top-left.visible {
+    opacity: 0.8;
+    visibility: visible;
+    color: #c62a2a;
+    /*font-size : smaller;*/
+    -webkit-transform: translate(-4em,-0.5em) scale(0.8);
+        -ms-transform: translate(-4em,-0.5em) scale(0.8);
+            transform: translate(-4em,-0.5em) scale(0.8);
+            -webkit-transition-duration : 0.5s;
+               -moz-transition-duration : 0.5s;
+                 -o-transition-duration : 0.5s;
+                    transition-duration : 0.5s;
+  }
+
+
+
+.reveal {
+  font-family: "Roboto", sans-serif;
+  font-size: 34px;
+  font-weight: normal;
+  color: #555;
+}
+
+
+.reveal .slides > section,
+.reveal .slides > section > section {
+  line-height: 1.2;
+  font-weight: inherit;
+}
+
+.reveal .footer {
+  position: absolute;
+  bottom: 0em;
+  left: 0em;
+  color : white;
+  font-size : 0.75em;
+  width : 100%;
+  height : 2em;
+}
+
+.reveal .footer .left {
+  position : relative;
+  float : left;
+  width : 10%;
+  height : 100%;
+  bottom : 0;
+}
+
+.reveal .footer .center {
+  position : relative;
+  text-align : center;
+  float : left;
+  color : white;
+  width : 80%;
+  height : 100%;
+  font-size : 1.25em;
+  background-color : #e62e2e;
+  padding-top : 0.3em;
+}
+
+.reveal .footer .right {
+  position : relative;
+  height : 100%;
+  width : 10%;
+  overflow : hidden;
+  float : right;
+  background-color : #e62e2e;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: #555;
+  font-family: "Roboto";
+  line-height: 1.1;
+}
+
+.reveal pre {
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+}
+
+.reveal section img {
+  border: 0;
+  box-shadow : none;
+}
+
+.reveal section img.plain {
+  border: 0;
+  box-shadow: none; }
+
+.reveal .controls {
+        background-color : rgba(0,0,0,0.25);
+        border-radius : 50%;
+        bottom : 55px;
+        -webkit-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+                transform: scale(0.5);
+      -webkit-transition-duration : 0.5s;
+         -moz-transition-duration : 0.5s;
+           -o-transition-duration : 0.5s;
+              transition-duration : 0.5s;
+
+}
+
+.reveal .controls:hover {
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition-duration : 0.5s;
+     -moz-transition-duration : 0.5s;
+       -o-transition-duration : 0.5s;
+          transition-duration : 0.5s;
+}
+
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #e62e2e;}
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #e62e2e; }
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #e62e2e; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #e62e2e; }
+
+.reveal .controls .navigate-left.enabled:hover {
+  border-right-color: #e600f1; }
+
+.reveal .controls .navigate-right.enabled:hover {
+  border-left-color: #e600f1; }
+
+.reveal .controls .navigate-up.enabled:hover {
+  border-bottom-color: #e600f1; }
+
+.reveal .controls .navigate-down.enabled:hover {
+  border-top-color: #e600f1; }
+
+.reveal .progress {
+  top : 0px;
+  background: rgba(0, 0, 0,0.5) ;
+  height : 0.35em;
+}
+
+.reveal .progress span {
+  background-color: #e62e2e;
+}
+
+/***************************************/
+/* SLIDE NUMBERING                     */
+/***************************************/
+
+.reveal .slide-number {
+  background-color : rgba(0,0,0,0);
+  font-size : 0.75em;
+  color : white;
+}
+
+
+/**************
+* Pour l'impression
+****************/
+a#printMe {
+         position : fixed;
+         top : 10px;
+         right : 0px;
+         display : block;
+         z-index : 1000;
+         color : rgba(0,0,0,0);
+	 width : 93px;
+	 height : 93px;
+}
+
+
+a:hover#printMe {
+	background : url("../../images/print.png") left top no-repeat;
+}

@@ -1,0 +1,35 @@
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+/* this pdf is intended to be used with pdf.css */
+
+@import url("pdf.css");
+
+.reveal .footer {
+	display:none !important;
+}
+
+.reveal .slide-number {
+	display:none !important;
+}
+
+a#printMe{
+	display : none;
+}
+
+.reveal .slides section .fragment.current-top-left.visible {
+	opacity: 1;
+	visibility: visible;
+	/*font-size : smaller;*/
+	-webkit-transform: translate(0em, 0em) scale(1);
+			-ms-transform: translate(0em, 0em) scale(1);
+					transform: translate(0em, 0em) scale(1);
+					-webkit-transition-duration : 0.5s;
+						 -moz-transition-duration : 0.5s;
+							 -o-transition-duration : 0.5s;
+									transition-duration : 0.5s;
+}

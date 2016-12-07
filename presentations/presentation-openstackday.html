@@ -1,0 +1,330 @@
+ <!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>OpenstackDay : Retour Devops</title>
+
+	<meta name="description" content="Openstack Day France - 22/11/2016">
+	<meta name="author" content="David Herviou | Pascal Lombard">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/arkea.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">
+
+
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf-arkea.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+	<style>
+	.reveal .slide-number {
+		background-color : rgba(0,0,0,0);
+		font-size : 0.75em;
+		color : black;
+	}
+	</style>
+
+</head>
+<body>
+
+	<div class="reveal">
+
+		<a id="printMe" href="javascript:printIt()"></a>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+
+			<section data-background="images/msq-cma-openstackday-head.png" data-background-size="100% 100%" style="text-align:right">
+				<h4 class="red title">Openstack Day France</h4>
+				<h4 class="red title">devops</h4>
+				<br/>
+				<h4>David Herviou</h4>
+				<p class="fragment current-grow">david.herviou@arkea.com</p>
+				<h4>Pascal Lombard</h4>
+				<p class="fragment current-grow">pascal.lombard@arkea.com</p>
+			</section>
+
+
+			<section data-background="images/msq-cma-openstackday-head.png" data-background-size="100% 100%">
+				<section style="text-align: right;" data-background="images/msq-cma-openstackday-head.png" data-background-size="100% 100%">
+					<h2>Le Credit Mutuel</h2>
+					<h1>Arkea</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3>Le Crédit Mutuel Arkea</h3>
+					<img src="images/cmarkea-lier.jpg" width="40%" height="40%" style="float:left; overflow:hidden"/>
+					<p class="fragment current-grow">Un groupe bancassurance mutualiste</p>
+					<p class="fragment current-grow">3 Fédérations</p>
+					<p class="fragment current-grow">Coopératif et territorial, non coté en bourse</p>
+					<p class="fragment current-grow">Une vingtaine de filiales en france et belgique</p>
+					<p class="fragment current-grow">Concepteur, fabricant et distributeur</p>
+
+				</section>
+
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3>Le Crédit Mutuel Arkea</h3>
+					<img src="images/cmarkea-lier.jpg" width="40%" height="40%" style="float:left;overflow:hidden"/>
+					<p class="fragment current-grow">Entrepreneur de la banque et de l'assurance</p>
+					<p class="fragment current-grow">L'innovation, une force de caractère</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3>Nos métiers</h3>
+					<img src="images/cma-metier.jpg" width="80%" height="80%"/>
+				</section>
+
+			</section>
+
+			<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h1>L'histoire du cloud privé chez CMArkea</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>2012-2013</h3>
+					<p class="fragment current-grow">Automatiser les tâches de configuration réseau</p>
+					<p class="fragment current-grow">Automatiser le provisionnement des environnements projets</p>
+					<p class="fragment current-grow">Offrir plus de flexibilité dans les process</p>
+					<p class="fragment current-grow">Début des expérimentations Openstack et offres de PAAS</p>
+
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+				    <img src="images/cloud-continuous-delivery-integration.svg" width="80%" height="80%"/>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>2014</h3>
+					<p class="fragment current-grow">Création d'une POC mixant Openstack avec Docker</p>
+					<p class="fragment current-grow">Openstack : répond aux problématiques IT identifiés jusqu'ici</p>
+					<p class="fragment current-grow">Docker : permet d'offrir un élément unique de livraison à la main des développeurs</p>
+
+				</section>
+
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>Fin 2014 : le tournant</h3>
+					<p class="fragment current-grow">Présence de Shadow IT sur la partie cloud public AWS</p>
+					<p class="fragment current-grow">Force l'étude et la comparaison de valeur entre un cloud privé et un cloud public</p>
+					<p class="fragment current-grow">Identification des contraintes réglementaires à respecter</p>
+					<p class="fragment current-grow">Embryon de la proposition de ce que pourrait être notre cloud privé</p>
+
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>Début 2015 : la proposition de valeur</h3>
+					<p class="fragment current-grow">Identification de la proposition</p>
+					<p class="fragment current-grow">Motif de déploiement à la main des développeurs</p>
+					<p class="fragment current-grow">Envisage une approche Devops pour les premiers utilisateurs</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>Fin 2015 : premier développement et production</h3>
+					<p class="fragment current-grow">de Juin à Octobre les utilisateurs sont sur Kilo</p>
+					<p class="fragment current-grow">Une première montée de version est faite sur Liberty en Novembre (Hors-prod)</p>
+					<p class="fragment current-grow">La production est assurée sur une plateforme de transition</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>Premier semestre 2016 : Vers la production</h3>
+					<p class="fragment current-grow">Constitution d'une plateforme de production</p>
+					<p class="fragment current-grow">Echanges sur l'exploitabilité avec les Devs et la Prod</p>
+					<p class="fragment current-grow">Premier démarrage production pilote sur Openstack et Docker : Mai 2016</p>
+
+				</section>
+
+			</section>
+
+
+			<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h1>Notre Proposition</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">La mise en place d'un IAAS Openstack</h3>
+					<p class="fragment current-grow">Intégré fortement à notre SI</p>
+					<p class="fragment current-grow">A cheval entre 2 salles de notre datacenter Rennais</p>
+					<p class="fragment current-grow">Avec gestion de double abduction de flux en DMZ</p>
+					<p class="fragment current-grow">Avec routage vers les réseaux de notre "legacy"</p>
+					<p class="fragment current-grow">Sans stockage!</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Une Approche Infrastructure As Code</h3>
+					<p class="fragment current-grow">Le pilotage de la plateforme se fait par HEAT</p>
+					<p class="fragment current-grow">Un catalogue de motifs de déploiement est fourni aux utilisateurs</p>
+					<p class="fragment current-grow">Un type de livrable unique</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday-jenkins.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Un pilotage de l'infra par l'intégration continue</h3>
+					<p class="fragment current-grow">Développement d'un plugin Heat Orchestration Template pour Jenkins</p>
+					<p class="fragment current-grow">https://github.com/jenkinsci/openstack-heat-plugin</p>
+					<p class="fragment current-grow">A la main des utilisateurs finaux</p>
+
+				</section>
+
+				<section data-background-video="videos/vokoscreen-2016-11-18_13-25-35.webm" data-background-video-loop >
+					<!--video controls width="1917" height="766" autoplay loop>
+						<source src="videos/vokoscreen-2016-11-18_13-25-35.webm" type="video/webm">
+						Your browser does not support the video tag.
+					</video-->
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Un Portail Utilisateur Arkea On Demand</h3>
+					<p class="fragment current-grow">Catalogue de Services</p>
+					<p class="fragment current-grow">Accès aux informations des stacks applicatives</p>
+					<p class="fragment current-grow">Publication des Applications</p>
+					<p class="fragment current-grow">Accès au registre des dockers applicatifs</p>
+
+				</section>
+
+				<section data-background-video="videos/vokoscreen-2016-11-17_18-57-44.webm" data-background-video-loop >
+					<!--video width="1278" height="511" autoplay loop>
+						<source src="videos/vokoscreen-2016-11-17_18-57-44.webm" type="video/webm">
+						Your browser does not support the video tag.
+					</video-->
+				</section>
+
+			</section>
+
+
+			<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h1>Nos Observations / Constats</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>Pourquoi un Cloud Privé ?</h3>
+					<p class="fragment current-grow">Sécurité ?</p>
+					<p class="fragment current-grow">Coûts ?</p>
+					<p class="fragment current-grow">Réversibilité ?</p>
+					<p class="fragment current-grow">La Vraie Raison</p>
+					<p class="fragment current-grow">Openstack</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left"/>Nos utilisateurs</h3>
+					<p class="fragment current-grow">Les utilisateurs orientés Dev-Ops : L'autonomie</p>
+					<p class="fragment current-grow">Les utilisateurs hybrides : L'autonomie mais pas trop !</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">L'exploitation / Supervision</h3>
+					<p class="fragment current-grow">Une toute nouvelle approche de l'exploitation de la plateforme</p>
+					<p class="fragment current-grow">Une toute nouvelle approche de la supervision applicative</p>
+
+				</section>
+
+			</section>
+
+
+
+
+			<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h1>Notre Futur</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Les bonnes nouvelles</h3>
+					<p class="fragment current-grow">Adopter le cloud privé à l'échelle de tous les devs internes</p>
+					<p class="fragment current-grow">Eprouver le modèle Hybride</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">C'est Juste Un Début</h3>
+					<p class="fragment current-grow">Faire évoluer notre offre</p>
+					<p class="fragment current-grow">Repenser la gestion des ressources</p>
+					<p class="fragment current-grow">T R A N S F O R M E R</p>
+
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h1>Des Questions ?</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstackday.png" data-background-size="100% 100%">
+					<h1>Merci !</h1>
+				</section>
+
+			</section>
+
+
+		</div>
+	</div>
+
+
+
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="js/print-arkea.js"></script>
+
+	<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+		showNotes : false,
+		transition: 'concave', // none/fade/slide/convex/concave/zoom
+
+		// Optional reveal.js plugins
+		dependencies: [
+			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'plugin/zoom-js/zoom.js', async: true },
+			{ src: 'plugin/notes/notes.js', async: true }
+		]
+	});
+
+	Reveal.configure({slideNumber : 'c/t'});
+
+	</script>
+
+
+</body>
+</html>
