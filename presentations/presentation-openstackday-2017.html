@@ -1,0 +1,595 @@
+ <!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>REX Liberty vers Mitaka : l'histoire d'une migration</title>
+
+	<meta name="description" content="Openstack Day France - 17/11/2017">
+	<meta name="author" content="Frédéric Gillouard | Denis Gougeon">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/arkea.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">
+
+
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf-arkea.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+	<style>
+	.reveal .slide-number {
+		background-color : rgba(0,0,0,0);
+		font-size : 0.75em;
+		color : black;
+	}
+	</style>
+
+</head>
+<body>
+
+	<div class="reveal">
+
+		<a id="printMe" href="javascript:printIt()"></a>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+
+			<section data-background="images/msq-cma-openstackhead.png" data-background-size="100% 100%" style="text-align:right">
+				<h4 class="red title">REX Liberty vers Mitaka</h4>
+				<h4 class="red title">L'histoire d'une migration</h4>
+				<br/>
+				<h4>Frédéric Gillouard</h4>
+				<p class="fragment current-grow">frederic.gillouard@arkea.com</p>
+				<h4>Denis Gougeon</h4>
+				<p class="fragment current-grow">denis.gougeon@arkea.com</p>
+				<aside class="notes">
+				Fred :
+					Developpeur
+					Orchestration OpenStack (Heat)
+					Montainer du plugin Jenkins Openstack-Heat
+				</aside>
+			</section>
+
+
+			<section data-background="images/msq-cma-openstackhead.png" data-background-size="100% 100%">
+				<section style="text-align: right;" data-background="images/msq-cma-openstack-head.png" data-background-size="100% 100%">
+					<h2>Le Credit Mutuel</h2>
+					<h1>Arkea</h1>
+				</section>
+
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3>Le Crédit Mutuel Arkea</h3>
+					<img src="images/map-cma.png" width="60%" height="60%" style="float:left; overflow:hidden"/>
+					<p class="fragment current-grow">Une bancassurance régionale, un rayonnement sur toute la France et la Belgique</p>
+					<p class="fragment current-grow">3 Fédérations de Crédit Mutuel (Bretagne, Sud-Ouest, Massif Central)</p>
+					<p class="fragment current-grow">Une vingtaine de filiales couvrant tous les métiers de la bancassurance</p>
+					
+					<aside class="notes">
+					Fred :
+						Un groupe de bancassurance mutualiste
+						Coopératif et territorial, non coté en bourse
+						Concepteur, fabricant et distributeur
+					</aside>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3>Nos métiers</h3>
+					<img src="images/cma-metier.jpg" width="80%" height="80%"/>
+					<aside class="notes">
+					Fred:
+						Banque, Banque en ligne fortuneo et keytrade
+						Entreprise
+						BtoB et services spécialisés
+						Fabricant de produits
+						Habitat
+					</aside>
+				</section>
+
+			</section>
+			
+			<section data-background="images/msq-cma-openstackhead.png" data-background-size="100% 100%">
+				<section style="text-align: right;" data-background="images/msq-cma-openstack-head.png" data-background-size="100% 100%">
+					<h2>Cloud Arkea</h2>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Equipe cloud</h3>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">10 personnes :</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>Manager</li>
+									<li>2 devops</li>
+									<li>7 ingénieurs :</li>
+									<ul>
+										<li>3 systèmes</li>
+										<li>2 réseaux</li>
+										<li>2 développeurs</li>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</div>
+                               <aside class="notes">
+                                Denis:
+                                </aside>
+                        </section>
+
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Pourquoi le cloud prive</h3>
+					<p class="fragment current-grow">Banque : réglementaire, image de marque... </p>
+					<p class="fragment current-grow">Nos propres Datacenter : réutilisation des locaux</p>
+					<p class="fragment current-grow">Expertise interne : capitalisation humaine</p>
+					<p class="fragment current-grow">Intégration au sein du SI : proximité physique du mainframe, des data</p>
+                               <aside class="notes">
+                                Denis:
+                                </aside>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Workflow</h3>
+					<img src="images/workflow_cloud.png" width="80%" height="80%"/>
+					<aside class="notes">
+					Fred:
+						Ordonnanceur unique Jenkins
+						Heat comme unique porte d'entrée sur OpenStack
+					</aside>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Règles d'usage</h3>
+					<div class="fragment current-grow" style="text-align:left">Pas de stockage</div>
+					<div class="fragment current-grow" style="text-align:left">Pas de cluster : Infrastructure As Code</div>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">Equipe Cloud garantit :</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>Les modèles d'infrastructures : Loadbalancing, Dmz, Reverse Proxy...</li>
+									<li>Intégration continue pour valider l'ensemble des templates (Heat)</li>
+									<li>Les règles de sécurités d'infra : SecurityGroups, Firewall</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">Pour un projet/tenant :</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>Quota de ressource : Mémoire, disque, réseau...</li>
+									<li>Isolation des utilisateurs : Niveau d'habilitation</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">2 type d'utilisateurs :</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>Devops : autonome dans l'usage du cloud</li>
+									<li>Hybrides : Prestation clé en main de l'exploitation</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				<aside class="notes">
+					Fred:
+					Pas de cluster : gestion du patch management élévé grâce au redéploiement
+				</aside>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Plate-forme Liberty</h3>
+					<div class="fragment current-grow">
+					  <div>
+						<div style="text-align:left">Serveurs :</div>
+                                        	<div style="text-align:left;margin-left:100px">
+							<ul>
+								<li>Centos rdo</li>
+								<li>Server Dell R630 - Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz</li>
+								<li>Chef pour le déploiement</li>
+							</ul>
+						</div>
+					  </div>
+					</div>
+					<div class="fragment current-grow">
+          				  <div>
+							<div style="text-align:left">Composants Openstacks:</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>Core component : Nova implémentation qemu-kvm, Neutron implémentation openvswitch</li>
+									<li>Orchestration : Heat, TripleO</li>
+									<li>DNS : Designate avec gestion d’une zone par tenant déléguée depuis le SI Legacy</li>
+								</ul>
+							</div>
+					  </div>
+                                        </div>
+					<div class="fragment current-grow">
+					  <div>
+							<div style="text-align:left">Infrastructure :</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>3 contrôleurs en ha</li>
+									<li>8 computes : 3072vCPU, 2To RAM, 6To Disque</li>
+									<li>2 nœuds réseaux</li>
+								</ul>
+							</div>
+					  </div>
+					</div>
+                                <aside class="notes">
+                                    Denis: Heat :OS::Heat::SoftwareDeployment, association OS::Heat::SoftwareConfig + OS::NOva::Server 
+                                          Utilisation composants tripleo os-apply-config et os-collect-config
+                                </aside>
+				</section>
+
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Particularités réseaux</h3>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">Computes avec 4 interfaces réseaux:</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>1 bonding lacp pour l'administration</li>
+									<li>1 bonding lacp pour les réseaux de vm</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">Networks avec 8 interfaces réseaux:</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>1 bonding lacp pour l'administration</li>
+									<li>1 bonding lacp pour les réseaux de vm</li>
+									<li>1 bonding lacp pour le réseau public interne</li>
+									<li>1 interface vers réseau public opérateur 1</li>
+									<li>1 interface vers réseau public opérateur 2</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                                <aside class="notes">
+                                    Denis:
+                                </aside>
+				</section>
+
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Infrastructure Liberty</h3>
+					<img src="images/cloud_liberty.svg" width="100%" height="100%"/>
+				</section>
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Historique</h3>
+					<p class="fragment current-grow">Essentiellement des applications web</p>
+					<p class="fragment current-grow">Mise en oeuvre en septembre 2015</p>
+					<p class="fragment current-grow">Première exposition publique en avril 2016</p>
+
+				<aside class="notes">
+				Fred:
+					Première banque en france sur openstack et docker en production
+				</aside>
+				</section>
+			</section>
+			
+			
+			<section data-background="images/msq-cma-openstackhead.png" data-background-size="100% 100%">
+				<section style="text-align: right;" data-background="images/msq-cma-openstack-head.png" data-background-size="100% 100%">
+					<h2>Migration</h2>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Réflexions : Juin 2016</h3>
+					<p class="fragment current-grow">Ambition d'héberger l'ensemble des développements internes : 1000 applications</p>
+					<p class="fragment current-grow">Volonté d'avoir la dernière version de OpenStack : Mitaka</p>
+					<p class="fragment current-grow">Minimum d'interruption de service : applications en production</p>
+					<div class="fragment current-grow">
+						<div>
+							<div style="text-align:left">Distribution commerciale ?</div>
+							<div style="text-align:left;margin-left:100px">
+								<ul>
+									<li>Designate non supporté</li>
+									<li>Topologie réseau spécifique : interfaces multiples du à la segmentation de notre topologie réseau physique</li>
+									<li>Internet non routé sur notre backbone</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<aside class="notes">
+					Fred:
+					</aside>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Rolling upgrade vs Création d'une nouvelle plate-forme ?</h3>
+					<div class="fragment current-grow">
+					Contrainte utilisateurs : pas d'interruption de service
+					</div>	
+
+					<div class="fragment current-grow">
+					<p>Summit Austin : le rolling upgrade est encore trés expérimental</p>
+					<p>Rolling Upgrade : potentiellement coupure de service et rollback complexe</p>
+					</div>
+					
+					<div class="fragment current-grow">
+					<p>Nouvelle plateforme : maîtrise de ce type de déploiement</p>
+					<p>La taille de notre cloud privé permet ce mode opératoire</p>
+					<p>Possibilité d'ajouter de nouvelles fonctionnalités sans impact utilisateur</p>
+					</div>
+
+					<aside class="notes">
+					Fred:
+					</aside>
+				</section>
+				
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Plate-forme Mitaka</h3>
+                                                <div class="fragment current-grow">
+                                                <div style="text-align:left">Serveurs :</div>
+                                                <div style="text-align:left;margin-left:100px">
+                                                        <ul>
+                                                                <li>Centos rdo</li>
+                                                                <li>Server Dell R630 - Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz</li>
+                                                                <li>3 controlleurs en ha</li>
+                                                        </ul>
+                                                </div>
+                                        </div>
+					<div class="fragment current-grow">
+						<div style="text-align:left">Composants Openstacks :</div>
+						<div style="text-align:left;margin-left:100px">
+							<ul>
+								<li>Idem : Nova, Neutron, Glance, Designate</li>
+							</ul>
+						</div>
+					</div>
+					<div class="fragment current-grow">
+						<div style="text-align:left">Infrastructure :</div>
+						<div style="text-align:left;margin-left:100px">
+							<ul>
+								<li>16 computes 12288 vCPU 8To RAM 32To Disque</li>
+								<li>4 networks</li>
+								<li>3 controlleurs en ha</li>
+							</ul>
+						</div>
+					</div>
+                                <aside class="notes">
+                                        Denis : 
+                                </aside>
+				</section>
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<h3 class="fragment current-top-left">Evolutions topologie réseau des tenants</h3>
+					<div class="fragment current-grow">
+						<div style="text-align:left">Routeurs virtuels :</div>
+						<div style="text-align:left;margin-left:100px">
+							<ul>
+								<li>Idem : 2 routeurs virtuels vers Internet, mutualisés entre tenant, 1 par fai</li>
+								<li>New : 1 routeur virtuel par tenant vers le SI Legacy</li>
+								<li>New : tenant avec routeur virtuel vers SI en mode enable_snat=true</li>
+							</ul>
+						</div>
+                                        </div>
+					<div class="fragment current-grow">
+						<div style="text-align:left">Réseau :</div>
+						<div style="text-align:left;margin-left:100px">
+							<ul>
+								<li>Réseaux de tenants sont désormais non annoncés/routés dans le SI : meilleure sécurité</li>
+								<li>Utilisation de FIP à la place</li>
+								<li>Utilisation des zones de disponibilités réseaux</li>
+								<li>Allocation automatique des subnets des réseaux de tenants sur les routeurs de dmz</li>
+								<li>Utilisation BGP dynamic routing agent</li>
+							</ul>
+						</div>
+					</div>
+                                 <aside class="notes">
+                                        Denis : 
+						-FIP systematiquement utilisées pour exposer les applications
+						-Allocation automatique = utilisation neutron subnetpool-list et address-scope-list
+                                                -AZ réseaux = field  router availability_zone & availability_zone_hints : routeur ha garantie d'avoir au moins un rt virtuel par salle 
+                                 </aside>
+				</section>
+				<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+					<!--h3 class="fragment current-top-left">Infrastructure Mitaka</h3-->
+					<img src="images/Migration-Liberty-vers-Mitaka.svg" width="90%" height="90%"/>
+
+				 <aside class="notes">
+                                        Denis : mise en réseau commun pour faire porter les FIP aussi bien sur Liberty que sur Mitaka
+						Offre la possibilité de migrer application par application ou tenant par tenant
+                                 </aside>
+
+			       </section>
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h3 class="fragment current-top-left">Mode opératoire par projet/tenant 1/2</h3>
+				<p class="fragment current-grow">1 - Création du même projet/tenant sous Mitaka</p>
+				<p class="fragment current-grow">2 - Provisioning d'un bastion</p>
+				<p class="fragment current-grow">3 - Sauvegarde de la configuration des jenkins du projet sous Liberty</p>
+				<p class="fragment current-grow">4 - Passage d'un script de migration sur les configurations des jenkins</p>
+				<aside class="notes">
+				Fred:
+				</aside>
+			</section>
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h3 class="fragment current-top-left">Mode opératoire par projet(tenant)) 2/2</h3>
+				<p class="fragment current-grow">5 - Provisioning des jenkins à partir des configurations migrées sous Mitaka</p>
+				<p class="fragment current-grow">6 - Redéploiement de toutes les stacks à partir des jobs jenkins</p>
+				<p class="fragment current-grow">7 - Tests des applications à partir des urls internes générées automatiquement</p>
+				<p class="fragment current-grow">8 - Bascule DNS</p>
+				<p class="fragment current-grow">9 - Deassociation FIP Liberty</p>
+				<p class="fragment current-grow">10 - Association FIP Mitaka</p>
+				<aside class="notes">
+				Fred:
+				</aside>
+			</section>
+
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+                                        <!--h3 class="fragment current-top-left">Infrastructure Mitaka</h3-->
+                                        <img src="images/Migration-Liberty-vers-Mitaka-2.svg" width="90%" height="90%"/>
+
+                                 <aside class="notes">
+                                        Fred :
+                                </aside>
+			</section>
+
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h3 class="fragment current-top-left">Impacts</h3>
+				<div class="fragment current-grow" style="text-align:left">Infrastructure as code : Heat</div>
+				<div class="fragment current-grow">
+					<div style="text-align:left">Script migration jenkins :</div>
+					<div style="text-align:left;margin-left:100px">
+						<ul>
+							<li>Url openstack</li>
+							<li>Paramétres de certains scripts</li>
+							<li>Configuration de Ceph</li>
+						</ul>
+					</div>
+				</div>
+				<div class="fragment current-grow" style="text-align:left">Paas</div>
+				<div class="fragment current-grow" style="text-align:left">Gestion de la réservation des FIPs : nécessité d'avoir une unicité entre les deux plate-formes</div>
+				<aside class="notes">
+				Fred:
+				</aside>
+			</section>
+
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h3 class="fragment current-top-left">Déroulement</h3>
+				<div class="fragment current-grow">
+					<div style="text-align:left">Mise en oeuvre : Novembre 2016 -> Mai 2017</div>
+					<div style="text-align:left;margin-left:100px">
+						<ul>
+							<li>6 personnes</li>
+							<li>Commande/Livraison : 3 mois</li>
+							<li>Mise au point des recettes Chef pour Mitaka : 1 mois</li>
+							<li>installation des équipements : 2 semaines</li>
+							<li>Deploiement Openstack : 3 heures </li>
+							<li>Reprovisionnement des tenants Mitaka à l'identique de Liberty </li>
+							<li>Dev sur Heat, Paas, Script migration... : </li>
+							<li>Tests sur la Charge, migration à blanc, applications...</li>
+						</ul>
+					</div>
+				</div>
+				<div class="fragment current-grow" >
+					<div style="text-align:left">Migration des projets/tenant :</div>
+					<div style="text-align:left;margin-left:100px">
+						<ul>
+							<li>Elapse de 5 mois: Mai 2017 -> Septembre 2017</li>
+							<li>12 projets / 12 équipes</li>
+							<li>Une seule indisponibilité applicative : validation en amont non effectuée</li>
+						</ul>
+					</div>
+				</div>
+			        <aside class="notes">
+                                Denis:
+					test de charge de nos stacks -> augmentation du nombre de worker neutron
+                                </aside>
+			</section>
+
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h3 class="fragment current-top-left">Enseignements</h3>
+				<div class="fragment current-grow" style="text-align:left">Ce type de migration a été possible parce que notre cloud Liberty était "petit"</div>
+				<div class="fragment current-grow">
+					<div style="text-align:left">2 plate-formes en parallèles :</div>
+					<div style="text-align:left;margin-left:100px">
+						<ul>
+							<li>Utilisateurs ne sont pas pressés de migrer</li>
+							<li>Coût de la double maintenance</li>
+							<li>Difficulté à garder l'unicité des Floating ips</li>
+						</ul>
+					</div>
+				</div>
+				<div class="fragment current-grow" style="text-align:left">Sous estimation du côut de migration des outillages et motifs : Heat, Paas, Jenkins...</div>
+				<div class="fragment current-grow" style="text-align:left">Erreur d'intégrer des évolutions</div>
+				<div class="fragment current-grow" style="text-align:left">Difficultés de suivre le rythme des versions OpenStack</div>
+				<aside class="notes">
+				Fred:
+				</aside>
+			</section>
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h3 class="fragment current-top-left">Prochaine migration ?</h3>
+				<p class="fragment current-grow">Création d'un deuxième cloud sur un autre site</p>
+				<p class="fragment current-grow">Provisionning sur les deux clouds à partir d'un orchestrateur hors cloud</p>
+				<p class="fragment current-grow">DNS avancé : core DNS + etcd </p>
+				<p class="fragment current-grow">Montée de version d'un des 2 clouds à la fois : Rolling update</p>
+                         <aside class="notes">
+			     Denis:
+                         </aside>
+			</section>
+		</section>
+		
+		<section>
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h1>Des Questions ?</h1>
+                        <aside class="notes">
+                             Denis:
+                         </aside>
+			</section>
+		</section>
+		<section>
+			<section data-background="images/msq-cma-openstack.png" data-background-size="100% 100%">
+				<h1>Merci !</h1>
+			</section>
+		</section>
+
+		</div>
+	</div>
+
+
+
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="js/print-arkea.js"></script>
+
+	<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+		showNotes : false,
+		transition: 'concave', // none/fade/slide/convex/concave/zoom
+
+		// Optional reveal.js plugins
+		dependencies: [
+			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'plugin/zoom-js/zoom.js', async: true },
+			{ src: 'plugin/notes/notes.js', async: true }
+		]
+	});
+
+	Reveal.configure({slideNumber : 'c/t'});
+
+	</script>
+
+
+</body>
+</html>
